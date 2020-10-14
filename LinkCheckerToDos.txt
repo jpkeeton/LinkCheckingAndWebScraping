@@ -1,0 +1,46 @@
+First challenge/project: 
+
+1. DONE User enters a web site address.
+    * JK - this is from the command line ya?
+        * JK - not a GUI? though that'd be cool
+        * should work for any site, really
+2. Program accesses site and checks all page resources (e.g., js files, css files, images, etc.).
+    * JK - so page is launched and 
+    * JK - starts looking or just HREFs or, actually evertyhing?
+* Program notes any that are "dead."
+    * JK - like pgm will open a tab or window and check for 404?
+* Program follows href addresses on the page and repeats the test.
+    * JK - yah like above, should 
+* Program stays in the same domain.
+    * JK - should be fine, don't leave
+* Program has a "depth" limit on following href-chains 
+    * ** (e.g., don't go more than 10 pages "deep" into a site).
+* Program does not perform a repeat test of any page or link.
+    * JK - ok, not sure how that'd work
+* Program has a total pages test limit.
+    * JK - ok, not sure how that'd work
+* Program should have a time limit safety.
+    * JK - like if run time = > n seconds
+        * JK - break out and quit, close the application
+* Program should have a throttle setting (number of tests per second or similar).
+    * JK - something like a sleep/wait or whatever
+    * JK - what if a site has 1000s of links
+    * JK - remember when I hit Tableau and it got stopped me? ha!
+    * JK - put a throttle on ! see robots.txt examples
+        * JK - bonus points, look for a robots.txt and try to see their throttle limit 
+        * JK - multithreading! 
+* Program should test javascript-generated content as well.
+    * JK - that can probably done with xpath
+    * JK - requests module, reads back the source file
+    * there are a lot of sites that just use javascript to load the content
+    * you'll miss a lot of stuff!
+    * Splinter might automatically wait for js to fully load
+* Final report should go to console and text file (plain text, but human readable).
+    * Report should show, for each page tested, the main URL, links on the page, total dead ones.
+    * Report should show the total test time.
+    * Program shows progress on console during testing.
+    * Use VS Code, sharing via liveshare, can share thru MS/Github
+
+Use whatever common modules are needed to accomplish the task. Likely needs include Splinter or Selenium. Requests and BeautifulSoup might end up being useful, too.
+
+Optional: Create process such that the test is automatically executed once per day and sends an alert to an admin if any problems are encountered.
