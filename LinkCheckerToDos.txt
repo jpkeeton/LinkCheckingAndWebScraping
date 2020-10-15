@@ -5,7 +5,7 @@ First challenge/project:
         * JK - not a GUI? though that'd be cool
         * should work for any site, really
 2. Program accesses site and checks all page resources (e.g., js files, css files, images, etc.).
-    * JK - so page is launched and 
+    * JK - so page is launched
     * JK - starts looking or just HREFs or, actually evertyhing?
 * Program notes any that are "dead."
     * JK - like pgm will open a tab or window and check for 404?

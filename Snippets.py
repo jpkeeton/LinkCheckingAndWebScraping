@@ -104,3 +104,27 @@ for i in range(0, len(table)):
         while response.status_code != 200:
             response = requests.get(url)     
         data = response.json()
+
+
+# how to stop the program after certain amount of time
+import time
+start = time.time()
+PERIOD_OF_TIME = 300 # 5min
+while True :
+    ... do something
+    if time.time() > start + PERIOD_OF_TIME : break
+
+
+
+
+# putting links into a csv
+#     with open("Found Links",'w') as csvfile:
+#         write = csv.writer(csvfile, delimiter = ' ')
+#         write.writerows(link)
+
+# can i stick these into an excel sheet
+# https://stackoverflow.com/questions/59509411/python-selenium-csv-how-to-open-links-from-list-in-csv-file-loop-code-ap
+
+#  with open('Found Links', 'w', newline='') as csvfile:
+#     write = csv.writer(csvfile)
+#     write.writerows(link)
