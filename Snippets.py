@@ -73,22 +73,22 @@
 
 
 # Another status checker example:
-import urllib.request as urllib
+# import urllib.request as urllib
 
-req = urllib.Request('http://www.python.org/fish.html')
-try:
-    resp = urllib.urlopen(req)
-except urllib.HTTPError as e:
-    if e.code == 404:
-        print('first if bit')
-    else:
-        print('this is the else bit')
-except urllib.URLError as e:
-    # Not an HTTP-specific error (e.g. connection refused)
-    print("this is the exception")
-else:
-    print('another else bit')
-    body = resp.read()
+# req = urllib.Request('http://www.python.org/fish.html')
+# try:
+#     resp = urllib.urlopen(req)
+# except urllib.HTTPError as e:
+#     if e.code == 404:
+#         print('first if bit')
+#     else:
+#         print('this is the else bit')
+# except urllib.URLError as e:
+#     # Not an HTTP-specific error (e.g. connection refused)
+#     print("this is the exception")
+# else:
+#     print('another else bit')
+#     body = resp.read()
 
 
 # import urllib.request
@@ -97,22 +97,22 @@ else:
 
 
 
-for i in range(0, len(table)):
-        var = table.iloc[i]
-        url = 'http://example.request.com/var/'
-        response = requests.get(url)
-        while response.status_code != 200:
-            response = requests.get(url)     
-        data = response.json()
+# for i in range(0, len(table)):
+#         var = table.iloc[i]
+#         url = 'http://example.request.com/var/'
+#         response = requests.get(url)
+#         while response.status_code != 200:
+#             response = requests.get(url)     
+#         data = response.json()
 
 
 # how to stop the program after certain amount of time
-import time
-start = time.time()
-PERIOD_OF_TIME = 300 # 5min
-while True :
-    ... do something
-    if time.time() > start + PERIOD_OF_TIME : break
+# import time
+# start = time.time()
+# PERIOD_OF_TIME = 300 # 5min
+# while True :
+#     # ... do something
+#     if time.time() > start + PERIOD_OF_TIME : break
 
 
 
@@ -128,3 +128,33 @@ while True :
 #  with open('Found Links', 'w', newline='') as csvfile:
 #     write = csv.writer(csvfile)
 #     write.writerows(link)
+
+
+
+
+# maybe try using a list comprehension for this? in the below format
+# even_squaresFormatted = [x * x 
+#                 for x in range(10) 
+#                 if x % 2 == 0]
+
+
+
+
+# TODO: check each link status, using getcode
+# import urllib.request
+# print(urllib.request.urlopen("http://www.jeremypk.net").getcode())
+# # print(urllib.request.urlopen(link).getcode())
+
+
+
+# import requests
+
+# URL = 'https://www.monster.com/jobs/search/?q=Software-Developer&where=Australia'
+# page = requests.get(URL)
+# print(page)
+
+
+import requests
+URL = 'https://www.monster.com/jobs/search/?q=Software-Developer&where=Australia'
+page = requests.get(URL)
+print('the link  gave me back: ' + str(page))
