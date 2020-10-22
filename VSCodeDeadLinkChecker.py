@@ -4,10 +4,12 @@ import re
 import time
 import urllib.request
 import requests
-import httplib2
+# import httplib2
 from bs4 import BeautifulSoup, SoupStrainer
-from selenium import webdriver
+# from selenium import webdriver
 from splinter import Browser
+
+
 
 # User enters a web site address.
 site_to_visit = input("Please enter your address: ") 
@@ -23,15 +25,21 @@ if not site_to_visit.startswith("http"):
 
 # stick the user input into the visit function
 print('Hold please, we\'re checking....' + site_to_visit)
-browser.visit(site_to_visit)
+
 
 # checking to see if I can get a 200 here
 request = requests.get(site_to_visit)
+# this can only grab the starter code 
+# Tut Notes
+    # request is more often better for just a quick check
+    # you'll get the starter code so should be using just Splinter prob
 if request.status_code != 200:
     print('looks like a bad link, try again')   
 else:
     print('that is alive, let us continue') 
 
+# launch browser instance
+browser.visit(site_to_visit)
 
 # Just tell user of the links we found
 print('Here are the links I found: ')
@@ -46,25 +54,15 @@ soup = BeautifulSoup(resp, parser, from_encoding=resp.info().get_param('charset'
 # Looping thru all the anchor hrefs
 for link in soup.find_all('a', href=True):
     print(link['href'])
-    print(urllib.request.urlopen(link).getcode())
+    if link['href'].startswith('http'):
+        print(urllib.request.urlopen(link['href']).getcode())
+        # so here we're finding #content, referring to anchor/tag
 
 
 # maybe try using a list comprehension for this? in the below format
 # even_squaresFormatted = [x * x 
 #                 for x in range(10) 
 #                 if x % 2 == 0]
-
-
-
-# TODO: check each link status, using getcode
-import urllib.request
-print(urllib.request.urlopen("http://www.jeremypk.net").getcode())
-# print(urllib.request.urlopen(link).getcode())
-
-
-
-
-
 
 # End test and quit browser    
 print('Ending test')

@@ -158,3 +158,25 @@ import requests
 URL = 'https://www.monster.com/jobs/search/?q=Software-Developer&where=Australia'
 page = requests.get(URL)
 print('the link  gave me back: ' + str(page))
+
+
+
+
+# code for checking execution duration
+import os
+from datetime import datetime
+
+print ('Starting Pings!')
+startTime = datetime.now()
+ip_list = ['8.8.8.8', '192.168.1.1']
+for ip in ip_list:
+    response = os.popen(f"ping {ip}").read()
+    if "Received = 4" in response:
+        print(f"{ip} Ping Successful")
+    else:
+        print(f"{ip} Ping Unsuccessful")
+        
+# So how long did this take?
+print('This test took: ' + (str(datetime.now() - startTime)) + ' Seconds')
+# print(datetime.now() - startTime)
+# or more verbosely

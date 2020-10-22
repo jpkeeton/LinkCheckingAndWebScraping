@@ -5,9 +5,9 @@ import time
 import urllib.request
 import requests
 import httplib2
-from bs4 import BeautifulSoup, SoupStrainer
+# from bs4 import BeautifulSoup, SoupStrainer
 from selenium import webdriver
-from splinter import Browser
+# from splinter import Browser
 
 
 # User enters a web site address.
@@ -15,7 +15,7 @@ site_to_visit = input("Please enter your address: ")
 
 # Driver location
 executable_path={'executable_path':r'C:\Users\jpkee\Downloads\chromedriver_win32\chromedriver.exe'}
-# Create a browser instance
+# Create a browser instance and make it headless with the 'headless=True' bit
 browser = Browser('chrome', **executable_path, headless=True)
 
 # Add 'https://' to the front if the link doesn't start with 'http'
