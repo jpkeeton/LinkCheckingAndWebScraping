@@ -161,6 +161,10 @@ print('the link  gave me back: ' + str(page))
 
 
 
+# Window sizings
+    # driverDashboard.set_window_size(180000, 1400)
+    # driverDashboard.maximize_window()
+
 
 # code for checking execution duration
 import os
