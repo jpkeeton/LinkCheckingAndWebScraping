@@ -2,6 +2,8 @@
 import csv
 import re
 import time
+import os
+from datetime import datetime
 import urllib.request
 import requests
 # import httplib2
@@ -10,16 +12,23 @@ from bs4 import BeautifulSoup, SoupStrainer
 from splinter import Browser
 
 
+# TODO Set headers
+# https://hackersandslackers.com/scraping-urls-with-beautifulsoup/
+
+
+# Starting timer
+startTime = datetime.now()
 
 # User enters a web site address.
-site_to_visit = input("Please enter your address: ") 
+
+site_to_visit = input("Please enter an address: ") 
 
 # Driver location
 executable_path={'executable_path':r'C:\Users\jpkee\Downloads\chromedriver_win32\chromedriver.exe'}
-# Create a browser instance
+# Create a Chrombrowser instance, in this case make it headless
 browser = Browser('chrome', **executable_path, headless=True)
 
-# Add 'https://' to the front if the link doesn't start with 'http'
+# Add 'https://' if needed
 if not site_to_visit.startswith("http"):
     site_to_visit = "https://" + site_to_visit
 
@@ -29,25 +38,22 @@ print('Hold please, we\'re checking....' + site_to_visit)
 
 # checking to see if I can get a 200 here
 request = requests.get(site_to_visit)
-# this can only grab the starter code 
-# Tut Notes
-    # request is more often better for just a quick check
-    # you'll get the starter code so should be using just Splinter prob
-if request.status_code != 200:
-    print('looks like a bad link, try again')   
+if request.status_code == 200:
+    print('looks good, lets continue')   
 else:
-    print('that is alive, let us continue') 
+    print('site is busted')
 
-# launch browser instance
+
+# launch browser
 browser.visit(site_to_visit)
 
 # Just tell user of the links we found
 print('Here are the links I found: ')
 
-# create a parser
+# Create a parser
 parser = 'html.parser' 
     # lxml or html5lib can also be used
-    # resp here is creating a urllib request and I'm sticking the stite to visit in as parameter
+    # resp here is creating a urllib request and I'm sticking the site to visit in as parameter
 resp = urllib.request.urlopen(site_to_visit)
 soup = BeautifulSoup(resp, parser, from_encoding=resp.info().get_param('charset'))
 
@@ -58,11 +64,20 @@ for link in soup.find_all('a', href=True):
         print(urllib.request.urlopen(link['href']).getcode())
         # so here we're finding #content, referring to anchor/tag
 
+# how to find all image tags?
+soup.find_all
+
+
 
 # maybe try using a list comprehension for this? in the below format
 # even_squaresFormatted = [x * x 
 #                 for x in range(10) 
 #                 if x % 2 == 0]
+
+# add a timer
+print('This test took: ' + (str(datetime.now() - startTime)) + ' Seconds')
+
+# so for some reason the FQDN are giving me a 200, I just want to make sure that the primary domain is up
 
 # End test and quit browser    
 print('Ending test')
