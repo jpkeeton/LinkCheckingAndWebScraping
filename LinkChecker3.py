@@ -23,9 +23,9 @@ import time
 
 # <>>
 
-executable_path={'executable_path':r'C:\Users\jpkee\Downloads\chromedriver_win32\chromedriver.exe'}
-# Create a browser instance
-browser = Browser('chrome', **executable_path, headless=True)
+# executable_path={'executable_path':r'C:\Users\jpkee\Downloads\chromedriver_win32\chromedriver.exe'}
+# # Create a Chrome browser instance
+# browser = Browser('chrome', **executable_path, headless=True)
 
 
 
@@ -33,16 +33,17 @@ browser = Browser('chrome', **executable_path, headless=True)
 print("Starting test\n")
 
 # Set up the driver for Firefox
-# driver = webdriver.Firefox()
+driver = webdriver.Firefox()
 
 
 
 # Grab the url
-browser.get("http://www.python.org")
+# browser.get("http://www.python.org")
+driver.get("http://www.python.org")
 
 
 
-# title = driver.title
+title = driver.title
 
 # Make an assertion
 assert "Python" in driver.title
@@ -58,7 +59,7 @@ elem = driver.find_element_by_name("q")
 
 # Enter some text into search box
 elem.send_keys("pycon")
-time.sleep(3)
+# time.sleep(3)
 # Hit enter
 elem.send_keys(Keys.RETURN)
 

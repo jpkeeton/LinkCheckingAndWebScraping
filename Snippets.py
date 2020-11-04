@@ -166,6 +166,18 @@ print('the link  gave me back: ' + str(page))
     # driverDashboard.maximize_window()
 
 
+# this was the old linkchecker bit I was using, checking every link for get code which is not needed
+    # Looping thru all the anchor hrefs, first version
+    # for link in soup.find_all('a', href=True):
+    #     print(link['href'])
+    #     if link['href'].startswith('http'):
+    #         # so it's in here, i don't need to get code for all of these, it's also giving me 403 problems
+    #         print(urllib.request.urlopen(link['href']).getcode())
+    #         # so here we're finding #content, referring to anchor/tag
+
+
+
+
 # code for checking execution duration
 import os
 from datetime import datetime

@@ -43,6 +43,14 @@ if request.status_code == 200:
 else:
     print('site is busted')
 
+# <<
+# # if browser.status_code != 200:
+# #     print('looks like a bad link, try again')
+# # else:
+# #     print('that is alive, let us continue')
+
+# >>
+
 
 # launch browser
 browser.visit(site_to_visit)
@@ -57,15 +65,24 @@ parser = 'html.parser'
 resp = urllib.request.urlopen(site_to_visit)
 soup = BeautifulSoup(resp, parser, from_encoding=resp.info().get_param('charset'))
 
-# Looping thru all the anchor hrefs
+
+
+# second version
 for link in soup.find_all('a', href=True):
     print(link['href'])
-    if link['href'].startswith('http'):
-        print(urllib.request.urlopen(link['href']).getcode())
+        # comment this out
+    # if link['href'].startswith('http'):
+        # so it's in here, i don't need to get code for all of these, it's also giving me 403 problems
+        # comment this out
+        # print(urllib.request.urlopen(link['href']).getcode())
         # so here we're finding #content, referring to anchor/tag
+    # just print the hrefs!
+
+
+
 
 # how to find all image tags?
-soup.find_all
+# soup.find_all
 
 
 
@@ -74,10 +91,10 @@ soup.find_all
 #                 for x in range(10) 
 #                 if x % 2 == 0]
 
-# add a timer
+# add a timer!
 print('This test took: ' + (str(datetime.now() - startTime)) + ' Seconds')
 
-# so for some reason the FQDN are giving me a 200, I just want to make sure that the primary domain is up
+# TODO Figure out why FQDNs are giving me a 200, only the primary domain needs to be checked 
 
 # End test and quit browser    
 print('Ending test')
