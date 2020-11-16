@@ -32,7 +32,7 @@ browser = Browser('chrome', **executable_path, headless=True)
 if not site_to_visit.startswith("http"):
     site_to_visit = "https://" + site_to_visit
 
-# stick the user input into the visit function
+# Stick the user input into the visit function
 print('Hold please, we\'re checking....' + site_to_visit)
 
 
@@ -42,14 +42,6 @@ if request.status_code == 200:
     print('looks good, lets continue')   
 else:
     print('site is busted')
-
-# <<
-# # if browser.status_code != 200:
-# #     print('looks like a bad link, try again')
-# # else:
-# #     print('that is alive, let us continue')
-
-# >>
 
 
 # launch browser
@@ -67,6 +59,8 @@ soup = BeautifulSoup(resp, parser, from_encoding=resp.info().get_param('charset'
 
 
 
+
+
 # second version
 for link in soup.find_all('a', href=True):
     print(link['href'])
@@ -78,10 +72,10 @@ for link in soup.find_all('a', href=True):
         # so here we're finding #content, referring to anchor/tag
     # just print the hrefs!
 
+print('Number of links: ' + str(len(site_to_visit)))
 
 
-
-# how to find all image tags?
+# TODO how to find all image tags?
 # soup.find_all
 
 
